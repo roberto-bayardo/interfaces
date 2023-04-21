@@ -31,8 +31,8 @@ service ETHBACKEND {
 
   rpc EngineGetPayloadBodiesByRangeV1(EngineGetPayloadBodiesByRangeV1Request) returns (EngineGetPayloadBodiesV1Response);
 
-  // Fetch the blobs bundle using its ID.
-  rpc EngineGetBlobsBundleV1(EngineGetBlobsBundleRequest) returns (types.BlobsBundleV1);
+  // Fetch the payload along with its blobs bundle using its ID.
+  rpc EngineGetPayloadWithBlobs(EngineGetPayloadRequest) returns (EngineGetPayloadResponse);
 
   // End of Engine API requests
   // ------------------------------------------------------------------------
@@ -93,10 +93,6 @@ message NetPeerCountReply { uint64 count = 1; }
 
 
 message EngineGetPayloadRequest {
-  uint64 payload_id = 1;
-}
-
-message EngineGetBlobsBundleRequest {
   uint64 payload_id = 1;
 }
 
